@@ -1,0 +1,214 @@
+/* 重置默认样式 */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* 页面背景 */
+body {
+    font-family: 'Segoe UI', Arial, sans-serif;
+    height: 100vh;
+    overflow-y: scroll;
+    background: #000;
+}
+
+/* 广告容器 */
+.advertisement-container {
+    position: relative;
+    height: 200vh;
+    color: #ffffff;
+    overflow: hidden;
+}
+
+/* 视频背景 */
+.background-video {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    object-fit: cover;
+    z-index: -1;
+}
+
+/* 蒙版 */
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0);
+    transition: background 0.5s ease;
+    z-index: 0;
+}
+
+.overlay.active {
+    background: rgba(0, 0, 0, 0.7);
+}
+
+/* 粒子容器 */
+.particles-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    z-index: 1;
+}
+
+/* 头部 */
+.header {
+    width: 100%;
+    padding: 20px;
+    text-align: center;
+    z-index: 2;
+    position: fixed;
+    top: 0;
+}
+
+.logo img {
+    max-height: 60px;
+    max-width: 200px;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+}
+
+.logo-text {
+    font-size: 36px;
+    font-weight: bold;
+    color: #ffffff;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    letter-spacing: 2px;
+}
+
+/* 内容区域 */
+.content {
+    z-index: 2;
+    position: absolute;
+    top: 120vh;
+    left: 10%;
+    width: 80%;
+    max-width: 1000px;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.content.active {
+    opacity: 1;
+}
+
+.content h1 {
+    font-size: 48px;
+    font-weight: 700;
+    margin-bottom: 20px;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+    opacity: 0;
+    transform: translateX(-50px);
+}
+
+.content p {
+    font-size: 20px;
+    margin-bottom: 40px; /* 增加间距 */
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+    opacity: 0;
+    transform: translateX(-50px);
+    max-width: 70%;
+}
+
+/* 按钮组 */
+.button-group {
+    display: flex;
+    gap: 20px; /* 按钮间距 */
+    align-items: center;
+}
+
+.try-now-btn {
+    display: inline-block;
+    padding: 15px 40px;
+    background: transparent; /* 透明背景 */
+    border: 2px solid #ffffff; /* 白色边框 */
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 18px;
+    font-weight: bold;
+    border-radius: 50px;
+    opacity: 0;
+    transform: scale(0.3);
+    transition: transform 0.3s, box-shadow 0.3s, border-color 0.3s;
+}
+
+.try-now-btn:hover {
+    transform: scale(1.1);
+    border-color: #ff6b6b; /* 悬浮时边框变红 */
+    box-shadow: 0 5px 15px rgba(255, 107, 107, 0.4);
+}
+
+.high-school-btn {
+    display: inline-block;
+    padding: 15px 40px;
+    background: transparent;
+    border: 2px solid #888888; /* 灰色边框，表示未开放 */
+    color: #888888;
+    font-size: 18px;
+    font-weight: bold;
+    border-radius: 50px;
+    opacity: 0;
+    transform: scale(0.3);
+    transition: transform 0.3s;
+    cursor: default; /* 无点击效果 */
+}
+
+/* 滑动提示 */
+.scroll-down {
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 2;
+    animation: bounce 2s infinite;
+}
+
+.arrow-down {
+    display: block;
+    width: 0;
+    height: 0;
+    border-left: 15px solid transparent;
+    border-right: 15px solid transparent;
+    border-top: 20px solid #ffffff;
+}
+
+/* 动画效果 */
+@keyframes slideInLeft {
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes bounceIn {
+    0% { transform: scale(0.3); }
+    50% { transform: scale(1.05); }
+    70% { transform: scale(0.9); }
+    100% { opacity: 1; transform: scale(1); }
+}
+
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+    40% { transform: translateY(-10px); }
+    60% { transform: translateY(-5px); }
+}
+
+/* 响应式调整 */
+@media (max-width: 768px) {
+    .content { left: 5%; width: 90%; }
+    .content h1 { font-size: 32px; }
+    .content p { font-size: 16px; max-width: 100%; }
+    .try-now-btn, .high-school-btn { padding: 10px 30px; }
+    .button-group { flex-direction: column; align-items: flex-start; gap: 15px; }
+}

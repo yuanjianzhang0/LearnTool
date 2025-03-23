@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>登录</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='login.css') }}">
+</head>
+<body>
+    <div class="logo-container">
+        <div class="logo">
+            <img src="{{ url_for('static', filename='logo.png') }}" alt="学习助手" onerror="this.style.display='none';this.nextElementSibling.style.display='inline';">
+            <span class="logo-text">山科智教学习能力评估平台（中小学版）</span>
+        </div>
+    </div>
+    <div id="login-container" class="login-container">
+        <h2>登录</h2>
+        <input id="username" class="input-box" placeholder="用户名">
+        <input id="password" class="input-box" type="password" placeholder="密码">
+        <button class="btn" onclick="login()">登录</button>
+        <p id="login-error" class="error"></p>
+        <div class="links">
+            <a href="#" onclick="showRegister()">注册</a> | 
+            <a href="#" onclick="showForgotPassword()">忘记密码</a>
+        </div>
+    </div>
+    <div id="register-container" class="login-container" style="display: none;">
+        <h2>注册</h2>
+        <input id="reg-username" class="input-box" placeholder="用户名">
+        <input id="reg-email" class="input-box" placeholder="邮箱">
+        <input id="reg-password" class="input-box" type="password" placeholder="密码">
+        <button class="btn" onclick="register()">注册</button>
+        <p id="register-error" class="error"></p>
+        <a href="#" onclick="showLogin()">返回登录</a>
+    </div>
+    <div id="forgot-password-container" class="login-container" style="display: none;">
+        <h2>重置密码</h2>
+        <input id="forgot-email" class="input-box" placeholder="邮箱">
+        <button class="btn" onclick="sendVerificationCode()">发送验证码</button>
+        <input id="verification-code" class="input-box" placeholder="验证码" style="display: none;">
+        <input id="new-password" class="input-box" type="password" placeholder="新密码" style="display: none;">
+        <button id="reset-btn" class="btn" onclick="resetPassword()" style="display: none;">重置密码</button>
+        <p id="forgot-error" class="error"></p>
+        <a href="#" onclick="showLogin()">返回登录</a>
+    </div>
+    <footer class="footer">
+        <p>© 2025 山科智教. 保留所有权利。</p>
+        <p>技术支持：sdust Intelligent education（山科智教） 团队 | 联系我们：<a href="mailto:support_skzj@sdust.edu.cn">邮箱</a></p>
+        <p>友情链接 <a href="https://www.sdust.edu.cn/">山东科技大学官网</a></p>
+    </footer>
+    <script src="{{ url_for('static', filename='login.js') }}"></script>
+</body>
+</html>
