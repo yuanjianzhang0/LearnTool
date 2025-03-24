@@ -9,13 +9,17 @@ from email.mime.text import MIMEText
 import random
 import re
 
-app = Flask(__name__)
-app.secret_key = app.secret_key = os.getenv('SECRET_KEY', '')
+APPSCRET_KEY = os.getenv('APPSCRET_KEY', '')
 DEEPSEEK_API_KEY = os.getenv('DEEPSEEK_API_KEY', '')
 SMTP_PASSWORD = os.getenv('SMTP_PASSWORD', '')
 SMTP_SERVER = os.getenv('SMTP_SERVER', '')
 SMTP_PORT = os.getenv('SMTP_PORT', 25)
 SMTP_USER = os.getenv('SMTP_USER', '')
+
+
+app = Flask(__name__)
+app.secret_key = APPSCRET_KEY
+
 
 # with open('key', 'r') as f:
 #     DEEPSEEK_API_KEY = f.read().strip()
