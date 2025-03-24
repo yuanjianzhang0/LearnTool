@@ -10,19 +10,19 @@ import random
 import re
 
 app = Flask(__name__)
-app.secret_key = 'your-secret-key-here'
+app.secret_key = APPSCRET_KEY
 
-with open('key', 'r') as f:
-    DEEPSEEK_API_KEY = f.read().strip()
+# with open('key', 'r') as f:
+#     DEEPSEEK_API_KEY = f.read().strip()
+
+
+# os.environ['http_proxy'] = 'http://127.0.0.1:7890'
+# os.environ['https_proxy'] = 'http://127.0.0.1:7890'
+
+# with open('smtp_key', 'r') as f:
+#     SMTP_PASSWORD = f.read().strip()
 
 client = OpenAI(api_key=DEEPSEEK_API_KEY, base_url="https://api.deepseek.com")
-
-with open('smtp_key', 'r') as f:
-    SMTP_PASSWORD = f.read().strip()
-
-SMTP_SERVER = 'smtp.163.com'
-SMTP_PORT = 25
-SMTP_USER = 'yjzhangsdust@163.com'
 verification_codes = {}
 
 def init_db():
@@ -399,5 +399,6 @@ def logout():
     return redirect(url_for('login_page'))
 
 if __name__ == '__main__':
+    # app.run(debug=True)
     port = int(os.environ.get("PORT", 5000))
     app.run(host="0.0.0.0", port=port)
