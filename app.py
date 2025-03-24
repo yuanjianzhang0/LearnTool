@@ -16,6 +16,13 @@ SMTP_SERVER = os.getenv('SMTP_SERVER', '')
 SMTP_PORT = os.getenv('SMTP_PORT', 25)
 SMTP_USER = os.getenv('SMTP_USER', '')
 
+print(f"APPSERCET_KEY: {APPSCRET_KEY}")
+print(f"DEEPSEEK_API_KEY: {DEEPSEEK_API_KEY}")
+print(f"SMTP_PASSWORD: {SMTP_PASSWORD}")
+print(f"SMTP_SERVER: {SMTP_SERVER}")
+print(f"SMTP_PORT: {SMTP_PORT}")
+print(f"SMTP_USER: {SMTP_USER}")
+
 
 app = Flask(__name__)
 app.secret_key = APPSCRET_KEY
